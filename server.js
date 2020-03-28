@@ -8,14 +8,15 @@ const mockUserData=[
 
 // NOTE: github had the app.get after trying to use "node server.js"
 // this doesn't work
+// there's no message of "server is running" without the app.get below
 
 
-
-app.get('/users', function(req, res){
+app.get('/users/:id', function(req, res){
+    console.log(req.params.id)
     res.json({
         success: true,
-        message: 'successfully got users.  good shit',
-        users: mockUserData
+        message: 'got one user, good shit',
+        users: req.params.id
     })
 })
 
